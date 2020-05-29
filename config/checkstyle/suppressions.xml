@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC "-//Checkstyle//DTD SuppressionFilter Configuration 1.2//EN" "https://checkstyle.org/dtds/suppressions_1_2.dtd">
+<suppressions>
+    <!-- Reason: Reason description -->
+    <suppress checks="Check identifier" files="ClassName.java"/>
+    <!-- Reason: App.java has only main() static method but is not a utility class -->
+    <suppress checks="HideUtilityClassConstructor" files="Application.java"/>
+</suppressions>
