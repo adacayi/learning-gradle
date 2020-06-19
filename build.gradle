@@ -56,6 +56,10 @@ test {
 jacocoTestReport {
 	dependsOn test // tests are required to run before generating the report
 	finalizedBy jacocoTestCoverageVerification
+
+	reports {
+		xml.enabled = true
+	}
 }
 
 jacocoTestCoverageVerification {
@@ -63,6 +67,19 @@ jacocoTestCoverageVerification {
 		rule {
 			limit {
 				minimum = 0.80
+			}
+		}
+	}
+}
+
+file("sonar.properties").withReader {
+	Properties sonarProperties = new Properties()
+	sonarProperties.load(it)
+
+	sonarProperties.each { key, value ->
+		sonarqube {
+			properties {
+				property key, value
 			}
 		}
 	}
