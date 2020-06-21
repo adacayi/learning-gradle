@@ -62,8 +62,8 @@ check.dependsOn componentTest
 check.dependsOn jacocoTestCoverageVerification
 
 jacocoTestReport {
-    dependsOn componentTest, test // tests are required to run before generating the report
-    executionData(componentTest, test)
+    dependsOn tasks.withType(Test)
+    executionData tasks.withType(Test)
 
     reports {
         xml.enabled = true
@@ -73,7 +73,7 @@ jacocoTestReport {
 project.tasks["sonarqube"].dependsOn "jacocoTestReport"
 
 jacocoTestCoverageVerification {
-    executionData(componentTest, test)
+    executionData tasks.withType(Test)
     violationRules {
         rule {
             limit {
